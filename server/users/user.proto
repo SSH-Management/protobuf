@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package users;
+
+import "types/user.proto";
+
+option go_package = "github.com/SSH-Management/server/proto/server/users";
+
+message CreateUserRequest {
+  types.User user = 1;
+  string public_key = 2;
+}
+
+message CreateUserResponse {}
+
+message DeleteUserRequest { uint64 id = 1; }
+
+service UserService {
+  rpc Create(CreateUserRequest) returns (CreateUserResponse);
+}

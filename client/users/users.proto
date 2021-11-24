@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package users;
+
+import "common.proto";
+import "types/user.proto";
+
+option go_package = "github.com/SSH-Management/client/proto/client/users";
+
+message CreateUserRequest {
+  types.User user = 1 [(google.protobuf.field_tag) = {struct_tag: "validate:\"required\""}];
+  string public_key = 2 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,base64url\""}];
+}
+
+message CreateUserResponse {}
+
+message DeleteUserRequest { uint64 id = 1; }
+
+service UserService {
+  rpc Create(CreateUserRequest) returns (CreateUserResponse);
+}

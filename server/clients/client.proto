@@ -1,0 +1,29 @@
+// Client Service Protobuf file
+syntax = "proto3";
+
+package clients;
+
+import "types/user.proto";
+
+option go_package = "github.com/SSH-Management/server/proto/server/clients";
+
+message CreateClientRequest {
+  string name = 1;
+  string ip = 2;
+  string group = 3;
+}
+
+message CreateClientResponse {
+  uint64 id = 1;
+  repeated types.User users = 2;
+  string public_key = 3;
+}
+
+message DeleteClientRequest { uint64 id = 1; }
+message DeleteClientResponse {}
+
+service ClientService {
+  rpc Create(CreateClientRequest) returns (CreateClientResponse);
+
+  rpc Delete(DeleteClientRequest) returns (DeleteClientResponse);
+}
