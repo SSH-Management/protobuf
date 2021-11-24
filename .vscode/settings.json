@@ -1,0 +1,9 @@
+{
+    "protoc": {
+        "options": [
+            "-I 3rd-party",
+            "-I client",
+            "-I server"
+        ]
+    },
+}

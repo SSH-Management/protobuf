@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package client;
+
+import public "google/errdetails/error_details.proto";
+import public "google/tag/tag.proto";
+
+option go_package = "github.com/SSH-Management/server/proto/server";
+
+message Empty {}
