@@ -4,7 +4,7 @@ package types;
 
 import "common.proto";
 
-option go_package = "github.com/SSH-Management/protobuf/pkg/client/types";
+option go_package = "github.com/SSH-Management/protobuf/client/types";
 
 message User {
   string name = 1 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,alphaunicode,max=50\""}];

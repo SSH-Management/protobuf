@@ -6,7 +6,7 @@ package clients;
 import "common.proto";
 import "types/user.proto";
 
-option go_package = "github.com/SSH-Management/protobuf/pkg/server/clients";
+option go_package = "github.com/SSH-Management/protobuf/server/clients";
 
 message CreateClientRequest {
   string name = 1;
