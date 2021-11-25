@@ -2,9 +2,10 @@ syntax = "proto3";
 
 package users;
 
+import "common.proto";
 import "types/user.proto";
 
-option go_package = "github.com/SSH-Management/server/proto/server/users";
+option go_package = "github.com/SSH-Management/protobuf/pkg/server/users";
 
 message CreateUserRequest {
   types.User user = 1;

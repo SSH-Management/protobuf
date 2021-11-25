@@ -1,9 +1,6 @@
 {
     "protoc": {
-        "options": [
-            "-I 3rd-party",
-            "-I client",
-            "-I server"
-        ]
+        "options": []
     },
+    "go.inferGopath": false,
 }

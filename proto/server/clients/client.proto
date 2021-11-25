@@ -3,9 +3,10 @@ syntax = "proto3";
 
 package clients;
 
+import "common.proto";
 import "types/user.proto";
 
-option go_package = "github.com/SSH-Management/server/proto/server/clients";
+option go_package = "github.com/SSH-Management/protobuf/pkg/server/clients";
 
 message CreateClientRequest {
   string name = 1;

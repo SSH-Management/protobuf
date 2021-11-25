@@ -5,7 +5,7 @@ package users;
 import "common.proto";
 import "types/user.proto";
 
-option go_package = "github.com/SSH-Management/client/proto/client/users";
+option go_package = "github.com/SSH-Management/protobuf/pkg/client/users";
 
 message CreateUserRequest {
   types.User user = 1 [(google.protobuf.field_tag) = {struct_tag: "validate:\"required\""}];
