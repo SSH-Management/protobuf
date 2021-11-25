@@ -29,7 +29,7 @@ type CreateUserRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	User      *types.User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty" validate:"required"`
-	PublicKey string      `protobuf:"bytes,2,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty" validate:"required,base64url" conform:"trim"`
+	PublicKey string      `protobuf:"bytes,2,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty" conform:"trim" validate:"required,base64url"`
 }
 
 func (x *CreateUserRequest) Reset() {

@@ -10,15 +10,6 @@ protoc-go:
 	@mkdir -p client
 	@mkdir -p server
 	@mkdir -p common
-	@mkdir -p google/errdetails
-	@mkdir -p google/tag
-
-	@protoc -I proto/3rd-party/google \
-		--go_out=google \
-		--go-grpc_out=paths=source_relative:google \
-		--go-tag_out=paths=source_relative:google \
-		$(GOOGLE_PROOTFILES)
-	@rm -rf google/github.com
 
 	@protoc -I proto/common -I proto/3rd-party \
 		--go_out=common \

@@ -7,8 +7,8 @@
 package common
 
 import (
-	errdetails "github.com/SSH-Management/protobuf/google/errdetails"
-	tag "github.com/SSH-Management/protobuf/google/tag"
+	tag "github.com/searKing/golang/tools/cmd/protoc-gen-go-tag/tag"
+	errdetails "google.golang.org/genproto/googleapis/rpc/errdetails"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
