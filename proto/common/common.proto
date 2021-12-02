@@ -6,5 +6,3 @@ import public "google/errdetails/error_details.proto";
 import public "google/tag/tag.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/common";
-
-message Empty {}

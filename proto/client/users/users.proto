@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package users;
+package client.users;
 
 import "common.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/client/users";
 
 message LinuxUser {
-  string password = 4 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
   string shell = 5 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,min=6,max=50\""}];
   string username = 6 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
   repeated string system_groups = 8 [(google.protobuf.field_tag) = {struct_tag: "validate:\"dive,required,max=50\""}];
@@ -19,10 +19,12 @@ message CreateUserRequest {
   string public_key = 2 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required\""}];
 }
 
-message CreateUserResponse {}
+message CreateUserResponse {
+}
 
 message DeleteUserRequest { uint64 id = 1; }
 
 service UserService {
   rpc Create(CreateUserRequest) returns (CreateUserResponse);
+  rpc Delete(DeleteUserRequest) returns (google.protobuf.Empty);
 }

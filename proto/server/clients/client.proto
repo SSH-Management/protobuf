@@ -1,10 +1,10 @@
-// Client Service Protobuf file
 syntax = "proto3";
 
-package clients;
+package server.clients;
 
 import "common.proto";
 import "types/user.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/server/clients";
 
@@ -21,10 +21,9 @@ message CreateClientResponse {
 }
 
 message DeleteClientRequest { uint64 id = 1; }
-message DeleteClientResponse {}
 
 service ClientService {
   rpc Create(CreateClientRequest) returns (CreateClientResponse);
 
-  rpc Delete(DeleteClientRequest) returns (DeleteClientResponse);
+  rpc Delete(DeleteClientRequest) returns (google.protobuf.Empty);
 }

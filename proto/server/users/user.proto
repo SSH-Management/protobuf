@@ -1,9 +1,10 @@
 syntax = "proto3";
 
-package users;
+package server.users;
 
 import "common.proto";
 import "types/user.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/server/users";
 
@@ -12,10 +13,8 @@ message CreateUserRequest {
   string public_key = 2;
 }
 
-message CreateUserResponse {}
-
 message DeleteUserRequest { uint64 id = 1; }
 
 service UserService {
-  rpc Create(CreateUserRequest) returns (CreateUserResponse);
+  rpc Create(CreateUserRequest) returns (google.protobuf.Empty);
 }

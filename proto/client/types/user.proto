@@ -10,7 +10,6 @@ message User {
   string name = 1 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,alphaunicode,max=50\""}];
   string surnname = 2[(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,alphaunicode,max=50\""}];
   string email = 3[(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=150,email\""}];
-  string password = 4 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
   string shell = 5 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,min=6,max=50\""}];
   string username = 6 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
   string role = 7 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];

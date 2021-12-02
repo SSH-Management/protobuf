@@ -7,6 +7,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -19,7 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ClientServiceClient interface {
 	Create(ctx context.Context, in *CreateClientRequest, opts ...grpc.CallOption) (*CreateClientResponse, error)
-	Delete(ctx context.Context, in *DeleteClientRequest, opts ...grpc.CallOption) (*DeleteClientResponse, error)
+	Delete(ctx context.Context, in *DeleteClientRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type clientServiceClient struct {
@@ -32,16 +33,16 @@ func NewClientServiceClient(cc grpc.ClientConnInterface) ClientServiceClient {
 
 func (c *clientServiceClient) Create(ctx context.Context, in *CreateClientRequest, opts ...grpc.CallOption) (*CreateClientResponse, error) {
 	out := new(CreateClientResponse)
-	err := c.cc.Invoke(ctx, "/clients.ClientService/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/server.clients.ClientService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *clientServiceClient) Delete(ctx context.Context, in *DeleteClientRequest, opts ...grpc.CallOption) (*DeleteClientResponse, error) {
-	out := new(DeleteClientResponse)
-	err := c.cc.Invoke(ctx, "/clients.ClientService/Delete", in, out, opts...)
+func (c *clientServiceClient) Delete(ctx context.Context, in *DeleteClientRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, "/server.clients.ClientService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,7 +54,7 @@ func (c *clientServiceClient) Delete(ctx context.Context, in *DeleteClientReques
 // for forward compatibility
 type ClientServiceServer interface {
 	Create(context.Context, *CreateClientRequest) (*CreateClientResponse, error)
-	Delete(context.Context, *DeleteClientRequest) (*DeleteClientResponse, error)
+	Delete(context.Context, *DeleteClientRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedClientServiceServer()
 }
 
@@ -64,7 +65,7 @@ type UnimplementedClientServiceServer struct {
 func (UnimplementedClientServiceServer) Create(context.Context, *CreateClientRequest) (*CreateClientResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedClientServiceServer) Delete(context.Context, *DeleteClientRequest) (*DeleteClientResponse, error) {
+func (UnimplementedClientServiceServer) Delete(context.Context, *DeleteClientRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedClientServiceServer) mustEmbedUnimplementedClientServiceServer() {}
@@ -90,7 +91,7 @@ func _ClientService_Create_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/clients.ClientService/Create",
+		FullMethod: "/server.clients.ClientService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ClientServiceServer).Create(ctx, req.(*CreateClientRequest))
@@ -108,7 +109,7 @@ func _ClientService_Delete_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/clients.ClientService/Delete",
+		FullMethod: "/server.clients.ClientService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ClientServiceServer).Delete(ctx, req.(*DeleteClientRequest))
@@ -120,7 +121,7 @@ func _ClientService_Delete_Handler(srv interface{}, ctx context.Context, dec fun
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ClientService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "clients.ClientService",
+	ServiceName: "server.clients.ClientService",
 	HandlerType: (*ClientServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

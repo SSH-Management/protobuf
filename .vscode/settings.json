@@ -1,6 +1,9 @@
 {
     "protoc": {
-        "options": []
+        "compile_on_save": false,
+        "options": [
+            "--proto_path=${workspaceRoot}/proto",
+        ]
     },
     "go.inferGopath": false,
 }
