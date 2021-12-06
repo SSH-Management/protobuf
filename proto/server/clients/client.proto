@@ -3,20 +3,19 @@ syntax = "proto3";
 package server.clients;
 
 import "common.proto";
-import "types/user.proto";
 import "google/protobuf/empty.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/server/clients";
 
 message CreateClientRequest {
-  string name = 1;
-  string ip = 2;
-  string group = 3;
+  string name = 1 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
+  string ip = 2 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,ip,max=30\""}];
+  string group = 3 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=50\""}];
 }
 
 message CreateClientResponse {
   uint64 id = 1;
-  repeated types.User users = 2;
+  repeated common.LinuxUser users = 2;
   string public_key = 3;
 }
 

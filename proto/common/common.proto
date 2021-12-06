@@ -6,3 +6,10 @@ import public "google/errdetails/error_details.proto";
 import public "google/tag/tag.proto";
 
 option go_package = "github.com/SSH-Management/protobuf/common";
+
+message LinuxUser {
+    string username = 1 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,max=100\""}];
+    string shell = 2 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required,min=6,max=100\""}];
+    repeated string system_groups = 3 [(google.protobuf.field_tag) = {struct_tag: "validate:\"dive,required,max=100\""}];
+    string public_key = 4 [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required\""}];
+}

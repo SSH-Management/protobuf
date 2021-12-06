@@ -9,8 +9,8 @@ import "google/protobuf/empty.proto";
 option go_package = "github.com/SSH-Management/protobuf/server/users";
 
 message CreateUserRequest {
-  types.User user = 1;
-  string public_key = 2;
+  types.User user = 1  [(google.protobuf.field_tag) = {struct_tag: "validate:\"required\""}];
+  string public_key = 2  [(google.protobuf.field_tag) = {struct_tag: "conform:\"trim\" validate:\"required\""}];
 }
 
 message DeleteUserRequest { uint64 id = 1; }

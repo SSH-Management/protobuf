@@ -29,11 +29,11 @@ type User struct {
 
 	Name         string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty" conform:"trim" validate:"required,alphaunicode,max=50"`
 	Surnname     string   `protobuf:"bytes,2,opt,name=surnname,proto3" json:"surnname,omitempty" conform:"trim" validate:"required,alphaunicode,max=50"`
-	Email        string   `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty" validate:"required,max=150,email" conform:"trim"`
+	Email        string   `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty" conform:"trim" validate:"required,max=150,email"`
 	Password     string   `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty" conform:"trim" validate:"required,max=50"`
 	Shell        string   `protobuf:"bytes,5,opt,name=shell,proto3" json:"shell,omitempty" conform:"trim" validate:"required,min=6,max=50"`
-	Username     string   `protobuf:"bytes,6,opt,name=username,proto3" json:"username,omitempty" conform:"trim" validate:"required,max=50"`
-	Role         string   `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty" validate:"required,max=50" conform:"trim"`
+	Username     string   `protobuf:"bytes,6,opt,name=username,proto3" json:"username,omitempty" validate:"required,max=50" conform:"trim"`
+	Role         string   `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty" conform:"trim" validate:"required,max=50"`
 	SystemGroups []string `protobuf:"bytes,8,rep,name=system_groups,json=systemGroups,proto3" json:"system_groups,omitempty" validate:"dive,required,max=50"`
 	Groups       []string `protobuf:"bytes,9,rep,name=groups,proto3" json:"groups,omitempty" validate:"dive,required,max=50"`
 }
